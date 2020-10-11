@@ -1,4 +1,4 @@
-FROM ubuntu:19.04
+FROM ubuntu:20.04
 
 
 ARG SDKMAN_JAVA_INSTALLATION=14.0.2.j9-adpt
