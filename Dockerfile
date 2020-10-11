@@ -45,7 +45,7 @@ RUN apt-get -y install \
     x11-apps \
     #libqtwebkit-dev \
     #qt4-qmake \
-    qtwebkit-dev \
+    qtwebkit \
     jq \
     apt-transport-https
 
