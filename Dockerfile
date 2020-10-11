@@ -43,8 +43,9 @@ RUN apt-get -y install \
     xfonts-scalable \
     xfonts-cyrillic \
     x11-apps \
-    libqtwebkit-dev \
+    #libqtwebkit-dev \
     #qt4-qmake \
+    qtwebkit-dev \
     jq \
     apt-transport-https
 
