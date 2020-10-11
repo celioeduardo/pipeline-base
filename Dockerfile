@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 
 ARG SDKMAN_JAVA_INSTALLATION=14.0.2.j9-adpt
-ARG UBUNTU_VERSION=19.04
+ARG UBUNTU_VERSION=20.04
 
 ENV RUBY_VERSION 2.3.1
 ENV TERM dumb
@@ -44,8 +44,8 @@ RUN apt-get -y install \
     xfonts-cyrillic \
     x11-apps \
     #libqtwebkit-dev \
+    libqt5webkit5-dev \
     #qt4-qmake \
-    qtwebkit \
     jq \
     apt-transport-https
 
@@ -80,11 +80,19 @@ RUN curl -L https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_V
 
 # Making docker in docker possible
 #USER root
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y install apt-transport-https ca-certificates && \
-    echo "deb https://apt.dockerproject.org/repo debian-jessie main" | tee /etc/apt/sources.list.d/docker.list && \
-    apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
+
+# RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y install apt-transport-https ca-certificates && \
+#     echo "deb https://apt.dockerproject.org/repo debian-focal main" | tee /etc/apt/sources.list.d/docker.list && \
+#     apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
+#     DEBIAN_FRONTEND=noninteractive apt-get update && \
+#     apt-get install --assume-yes docker-engine && \
+#     echo 'Defaults  env_keep += "HOME"' >> /etc/sudoers
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y install apt-transport-https ca-certificates gnupg-agent && \
+    apt-key adv --fetch-keys https://download.docker.com/linux/ubuntu/gpg && \
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && \
     DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install --assume-yes docker-engine && \
+    apt-get install --assume-yes docker-ce docker-ce-cli containerd.io && \
     echo 'Defaults  env_keep += "HOME"' >> /etc/sudoers
 
 # Include useful functions to start/stop docker daemon in garden-runc containers in Concourse CI.
@@ -98,7 +106,7 @@ RUN apt-get update
 RUN apt-get -y install dotnet-sdk-2.1
 
 # NODEJS
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 
 # PHP
