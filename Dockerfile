@@ -31,7 +31,8 @@ RUN apt-get -y install \
     libsqlite3-dev \
     libxslt1-dev \
     libpq-dev \
-    bsdtar \
+    libarchive-tools \
+    #bsdtar \
     unzip \
     python \
     gem \
