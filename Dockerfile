@@ -1,9 +1,7 @@
 FROM ubuntu:19.04
 
-MAINTAINER Toshiaki Maki <tmaki@pivotal.io>
-MAINTAINER Marcin Grzejszczak <mgrzejszczak@pivotal.io>
 
-ARG SDKMAN_JAVA_INSTALLATION=8.0.242.j9-adpt
+ARG SDKMAN_JAVA_INSTALLATION=14.0.2.j9-adpt
 ARG UBUNTU_VERSION=19.04
 
 ENV RUBY_VERSION 2.3.1
