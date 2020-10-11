@@ -43,7 +43,7 @@ RUN apt-get -y install \
     xfonts-cyrillic \
     x11-apps \
     libqtwebkit-dev \
-    qt4-qmake \
+    #qt4-qmake \
     jq \
     apt-transport-https
 
