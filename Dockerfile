@@ -34,7 +34,7 @@ RUN apt-get -y install \
     libarchive-tools \
     #bsdtar \
     unzip \
-    python3 \
+    python \
     gem \
     xvfb \
     x11-xkb-utils \
