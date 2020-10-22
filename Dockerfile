@@ -13,7 +13,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN groupadd -g 999 appuser && \
     useradd -r -u 999 -m -g appuser appuser
 
-RUN apt-get -y update
+RUN apt-get -y update --fix-missing
 RUN apt-get -y install \
     sudo \
     software-properties-common \
