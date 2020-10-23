@@ -107,7 +107,7 @@ stop_docker() {
     return 0
   fi
 
-  kill -TERM $pid
+  kill -TERM $pid || echo "Failed to kill docker"
 }
 
 log_in() {
