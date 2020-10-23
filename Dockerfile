@@ -48,7 +48,8 @@ RUN apt-get -y install \
     #qt4-qmake \
     jq \
     apt-transport-https \
-    iproute2
+    iproute2 \
+    amazon-ecr-credential-helper
 
 RUN wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
 RUN echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
