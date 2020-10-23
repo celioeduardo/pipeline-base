@@ -117,6 +117,13 @@ RUN add-apt-repository -y ppa:ondrej/php
 RUN apt-get -y update && apt-get -y install php7.2
 RUN apt-get -y install php-pear php7.2-curl php7.2-dev php7.2-gd php7.2-mbstring php7.2-zip php7.2-mysql php7.2-xml
 
+# Install AWS Cli 
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.59.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    chmod +x ./aws/install && \
+    ./aws/install && \
+    rm -rf ./aws awscliv2.zip
+
 ENTRYPOINT [ \
 	"switch", \
 		"shell=/bin/sh", "--", \
